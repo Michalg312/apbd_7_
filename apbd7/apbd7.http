@@ -1,0 +1,6 @@
+@apbd7_HostAddress = http://localhost:5015
+
+GET {{apbd7_HostAddress}}/
+Accept: application/json
+
+###
