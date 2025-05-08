@@ -25,14 +25,15 @@ public class ClientService: IClientService
         return inf;
     }
 
-    public string RegisterClientToTrip(int id, int tripId)
+    public Task<string> RegisterClientToTrip(int id, int tripId)
     {
+        
         var result = _clientRepository.RegisterClientToTrip(id, tripId);
         return result;
 
     }
 
-    public string DeleteClientToTrip(int id, int tripId)
+    public Task<string> DeleteClientToTrip(int id, int tripId)
     {
         var result = _clientRepository.DeleteClientToTrip(id, tripId);
         return result;

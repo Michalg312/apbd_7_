@@ -63,7 +63,7 @@ public class ClientController(IClientService iClientService,IConfiguration confi
                         IdClient = reader.GetInt32(0),
                         IdTrip = reader.GetInt32(1),
                         RegisteredAt = reader.GetInt32(2),
-                        PaymentDate = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3) // Konwersja na int? (nullable int)
+                        PaymentDate = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3) 
                     });
                 }
             }
@@ -92,9 +92,9 @@ public class ClientController(IClientService iClientService,IConfiguration confi
     }
     
     [HttpPut("{id}/trips/{tripId}")]
-    public IActionResult RegisterClientToTrip(int id, int tripId)
+    public async Task<IActionResult> RegisterClientToTrip(int id, int tripId)
     {
-        string result = iClientService.RegisterClientToTrip(id, tripId);
+        string result = iClientService.RegisterClientToTrip(id, tripId).Result;
 
         return result switch
         {
@@ -108,9 +108,9 @@ public class ClientController(IClientService iClientService,IConfiguration confi
     }
     
     [HttpDelete("{id}/trips/{tripId}")]
-    public IActionResult DeleteClientToTrip(int id, int tripId)
+    public async Task<IActionResult> DeleteClientToTrip(int id, int tripId)
     {
-        string result = iClientService.DeleteClientToTrip(id, tripId);
+        string result =  iClientService.DeleteClientToTrip(id, tripId).Result;
 
         return result switch
         {
